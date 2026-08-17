@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Product Template Form View for Paint & Decor Fields -->
+        <record id="view_product_template_form_decor_inherit" model="ir.ui.view">
+            <field name="name">product.template.form.decor.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Paint &amp; Decor" name="decor_tab">
+                        <group>
+                            <group string="Main Classification">
+                                <field name="main_section" widget="radio"/>
+                            </group>
+
+                            <group string="Specifications">
+                                <field name="tool_type" invisible="main_section != 'tools'"/>
+                                <field name="color_code" invisible="main_section not in ('paint', 'wallpaper')"/>
+                                <field name="color_hex" invisible="main_section not in ('paint', 'wallpaper')"/>
+                                <field name="coverage_per_liter" invisible="main_section != 'paint'"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
